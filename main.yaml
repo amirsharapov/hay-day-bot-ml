@@ -1,0 +1,6 @@
+path: /home/amir/Code/hay-day-bot/datasets/main
+train: train
+val: val
+
+names:
+  0: Chicken

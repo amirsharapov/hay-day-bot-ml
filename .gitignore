@@ -1,0 +1,13 @@
+venv/
+temp/
+local/
+.idea/
+
+**/__pycache__/
+datasets/**/augmented/
+datasets/**/coco/
+datasets/**/train/
+datasets/**/val/
+
+datasets/**/train.cache
+datasets/**/val.cache
