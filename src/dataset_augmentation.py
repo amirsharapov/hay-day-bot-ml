@@ -60,7 +60,12 @@ SEQUENTIAL = iaa.Sequential(
 )
 
 
-def generate_augmentations(dataset: Dataset, from_scratch: bool = False):
+def generate_augmentations(dataset: Dataset):
+    dataset.clean_augmented_dir()
+    dataset.clean_coco_dir()
+    dataset.clean_train_dir()
+    dataset.clean_val_dir()
+
     for sample in dataset.iterate_raw_samples():
         # Skip if the name does not start with sample. temporary
         if not sample.name.startswith('sample_'):
@@ -140,9 +145,8 @@ def generate_augmentations(dataset: Dataset, from_scratch: bool = False):
             cv2.imwrite(str(preview_path), preview_image)
 
 
-def generate_coco_dir_from_augmented_dir(dataset: Dataset, from_scratch: bool = False):
-    if from_scratch:
-        dataset.clean_coco_dir()
+def generate_coco_dir_from_augmented_dir(dataset: Dataset):
+    dataset.clean_coco_dir()
 
     files = [file for file in dataset.augmented_dir.glob('*.png') if not file.stem.endswith('_preview')]
     files = list(sorted(files, key=lambda _: _.stem))

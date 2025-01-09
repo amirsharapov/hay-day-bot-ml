@@ -45,12 +45,16 @@ class Dataset:
     def val_dir(self):
         return self.root_dir / 'val'
 
-    def create_all_dirs(self):
-        mkdir(self.root_dir)
-        mkdir(self.raw_dir)
+    def create_augmented_dir(self):
         mkdir(self.augmented_dir)
+
+    def create_coco_dir(self):
         mkdir(self.coco_dir)
+
+    def create_train_dir(self):
         mkdir(self.train_dir)
+
+    def create_val_dir(self):
         mkdir(self.val_dir)
 
     def clean_augmented_dir(self):

@@ -11,3 +11,5 @@ datasets/**/val/
 
 datasets/**/train.cache
 datasets/**/val.cache
+
+runs/

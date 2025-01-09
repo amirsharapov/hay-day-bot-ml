@@ -22,7 +22,7 @@ def main():
 
     dataset = Dataset('main')
 
-    if not dataset.augmented_dir.exists():
+    if not dataset.augmented_dir.exists() or not list(dataset.augmented_dir.glob('*')):
         print('Augmented directory does not exist. Generating augmentations...')
         actions.insert(0, 'generate-augmentations')
 
