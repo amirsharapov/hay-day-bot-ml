@@ -275,13 +275,13 @@ def test_model():
 
 
 def main():
-    dataset = Dataset('wheat_farm')
+    dataset = Dataset('main')
 
     generate_augmentations(dataset)
     # preview_augmented_annotations(dataset)
     generate_coco_dir_from_augmented_dir(dataset)
     generate_train_val_dir(dataset)
-    train_model()
+    # train_model()
     # test_model()
 
 
