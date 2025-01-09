@@ -1,3 +1,4 @@
+import json
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -14,17 +15,24 @@ class Dataset:
         )
         return cls(path=path)
 
+    def __post_init__(self):
+        self.path = Path(self.path).resolve()
+        self.anylabeling_dir.mkdir(
+            parents=True,
+            exist_ok=True
+        )
+        self.samples_dir.mkdir(
+            parents=True,
+            exist_ok=True
+        )
+
     @property
-    def samples_dir(self):
+    def anylabeling_dir(self):
         return self.path / 'anylabeling'
 
     @property
-    def train_dir(self):
-        return self.path / 'train'
-
-    @property
-    def val_dir(self):
-        return self.path / 'val'
+    def samples_dir(self):
+        return self.path / 'samples'
 
     def get_samples(self):
         items = self.samples_dir.iterdir()
@@ -38,7 +46,7 @@ class Dataset:
 
         return samples
 
-    def create_new_sample(self):
+    def create_sample_dir(self):
         items = self.samples_dir.iterdir()
         items = list(items)
 
@@ -72,6 +80,20 @@ class Sample:
     @property
     def polygons_path(self):
         return self.path / 'polygons.json'
+
+    def destroy(self):
+        for item in self.path.rglob('*'):
+            item.unlink()
+        self.path.rmdir()
+
+    def copy_image_from(self, source: Path):
+        source = Path(source).resolve()
+        self.image_path.write_bytes(source.read_bytes())
+
+    def write_polygons(self, data: dict):
+        self.polygons_path.write_text(
+            data=json.dumps(data, indent=4)
+        )
 
 
 def get(name: str) -> Dataset:

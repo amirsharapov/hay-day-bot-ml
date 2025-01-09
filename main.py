@@ -1,10 +1,11 @@
 import sys
 
-from src.features.anylabeling.process import process_labeled_images
+from src.process_anylabeling_data import process_anylabeling_data
 
 
 def main():
     args = sys.argv[1:]
+    args = iter(args)
 
     visited = set()
 
@@ -12,10 +13,12 @@ def main():
         if arg in visited:
             continue
 
-        if arg == '--process-labeled-images':
-            process_labeled_images()
+        if arg == '--process-anylabeling-data':
+            name = next(args)
+            process_anylabeling_data(name)
 
         visited.add(arg)
 
 if __name__ == '__main__':
-    main()
+    # main()
+    process_anylabeling_data('datasets/chickens_ready_for_harvest')
