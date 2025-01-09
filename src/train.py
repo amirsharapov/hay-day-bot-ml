@@ -9,5 +9,5 @@ def train_model():
     model.train(
         data='main.yaml',
         epochs=50,
-        device=0
+        device=0,
     )

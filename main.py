@@ -21,8 +21,12 @@ def main():
         actions.append('train-model')
 
     dataset = Dataset('main')
+    dataset_augmentations_exists = (
+        dataset.augmented_dir.exists() and
+        list(dataset.augmented_dir.glob('*'))
+    )
 
-    if not dataset.augmented_dir.exists() or not list(dataset.augmented_dir.glob('*')):
+    if not dataset_augmentations_exists and 'generate-augmentations' not in actions:
         print('Augmented directory does not exist. Generating augmentations...')
         actions.insert(0, 'generate-augmentations')
 
