@@ -13,7 +13,7 @@ def main():
         if arg in visited:
             continue
 
-        if arg == '--process-anylabeling-data':
+        if arg == '--process-raw-data':
             name = next(args)
             process_anylabeling_data(name)
 

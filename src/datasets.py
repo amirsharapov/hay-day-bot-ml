@@ -17,7 +17,7 @@ class Dataset:
 
     def __post_init__(self):
         self.path = Path(self.path).resolve()
-        self.anylabeling_dir.mkdir(
+        self.raw_dir.mkdir(
             parents=True,
             exist_ok=True
         )
@@ -27,8 +27,8 @@ class Dataset:
         )
 
     @property
-    def anylabeling_dir(self):
-        return self.path / 'anylabeling'
+    def raw_dir(self):
+        return self.path / 'raw'
 
     @property
     def samples_dir(self):
