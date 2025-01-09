@@ -1,5 +1,5 @@
-#path: /home/amir/Code/hay-day-bot/datasets/main
-path: C:/Users/amirs/Code/hay-day-bot-ml/datasets/main
+#path: /home/amir/Code/hay-day-bot/datasets/chickens_ready_for_harvest
+path: C:/Users/amirs/Code/hay-day-bot-ml/datasets/chickens_ready_for_harvest
 train: train
 val: val
 

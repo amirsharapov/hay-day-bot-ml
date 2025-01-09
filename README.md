@@ -38,10 +38,6 @@ where N is the sample number. Each directory will also contain the following ite
 - `sample_N/_meta.json` - The metadata for the image and it's augmentations.
 - `sample_N/image.jpg` - The original image file.
 - `sample_N/polygons.json` - The list of polygons for the image.
-- `sample_N/augmentations/` - The list of augmentations for the image.
-- `sample_N/augmentations/augmentation_N/_meta.json` - The metadata for the augmented image.
-- `sample_N/augmentations/augmentation_N/image.jpg` - The augmented image file.
-- `sample_N/augmentations/augmentation_N/polygons.json` - The list of polygons for the augmented image.
 
 ## Model
 
@@ -53,9 +49,7 @@ Each model is stored as a directory with the following naming convention:
 where N is the model number. Each directory will also contain the following items:
 
 - `model_N/_meta.json` - The metadata for the model.
-- `model_N/best.pt` - The model file.
-- `model_N/last.pt` - The model file.
-- `model_N/ultralytics_results/` - The results of the model training.
+- `model_N/model.pt` - The model file.
 
 # Data Structures
 

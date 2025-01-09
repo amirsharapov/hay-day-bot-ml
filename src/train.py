@@ -7,7 +7,7 @@ def train_model():
 
     model = YOLO('yolo11n-seg.pt')
     model.train(
-        data='main.yaml',
+        data='chickens_ready_for_harvest.yaml',
         epochs=50,
         device=0,
     )

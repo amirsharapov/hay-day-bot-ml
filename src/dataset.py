@@ -27,7 +27,7 @@ class Dataset:
 
     @property
     def raw_dir(self):
-        return self.root_dir / 'raw'
+        return self.root_dir / 'labeled'
 
     @property
     def augmented_dir(self):

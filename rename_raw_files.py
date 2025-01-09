@@ -3,7 +3,7 @@ from pathlib import Path
 
 
 def main(do_rename: bool = False):
-    path = Path('datasets/main/raw')
+    path = Path('datasets/chickens_ready_for_harvest/anylabeling')
 
     highest_sample_n = float('-inf')
 
