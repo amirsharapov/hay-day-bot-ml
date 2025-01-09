@@ -3,7 +3,7 @@
   "flags": {},
   "shapes": [
     {
-      "label": "Chicken",
+      "label": "Chicken - Ready to Collect",
       "text": "",
       "points": [
         [
@@ -76,7 +76,7 @@
       "flags": {}
     },
     {
-      "label": "Chicken",
+      "label": "Chicken - Ready to Collect",
       "text": "",
       "points": [
         [
@@ -149,7 +149,7 @@
       "flags": {}
     },
     {
-      "label": "Chicken",
+      "label": "Chicken - Ready to Collect",
       "text": "",
       "points": [
         [
@@ -230,7 +230,7 @@
       "flags": {}
     },
     {
-      "label": "Chicken",
+      "label": "Chicken - Ready to Collect",
       "text": "",
       "points": [
         [
@@ -307,7 +307,7 @@
       "flags": {}
     },
     {
-      "label": "Chicken",
+      "label": "Chicken - Ready to Collect",
       "text": "",
       "points": [
         [
@@ -388,7 +388,7 @@
       "flags": {}
     },
     {
-      "label": "Chicken",
+      "label": "Chicken - Ready to Collect",
       "text": "",
       "points": [
         [
@@ -457,7 +457,7 @@
       "flags": {}
     },
     {
-      "label": "Chicken",
+      "label": "Chicken - Ready to Collect",
       "text": "",
       "points": [
         [
@@ -546,7 +546,7 @@
       "flags": {}
     },
     {
-      "label": "Chicken",
+      "label": "Chicken - Ready to Collect",
       "text": "",
       "points": [
         [
@@ -623,7 +623,7 @@
       "flags": {}
     },
     {
-      "label": "Chicken",
+      "label": "Chicken - Ready to Collect",
       "text": "",
       "points": [
         [
@@ -696,7 +696,7 @@
       "flags": {}
     },
     {
-      "label": "Chicken",
+      "label": "Chicken - Ready to Collect",
       "text": "",
       "points": [
         [
@@ -773,7 +773,7 @@
       "flags": {}
     },
     {
-      "label": "Chicken",
+      "label": "Chicken - Ready to Collect",
       "text": "",
       "points": [
         [
@@ -842,7 +842,7 @@
       "flags": {}
     },
     {
-      "label": "Chicken",
+      "label": "Chicken - Ready to Collect",
       "text": "",
       "points": [
         [
@@ -919,7 +919,7 @@
       "flags": {}
     },
     {
-      "label": "Chicken",
+      "label": "Chicken - Ready to Collect",
       "text": "",
       "points": [
         [
@@ -996,7 +996,7 @@
       "flags": {}
     },
     {
-      "label": "Chicken",
+      "label": "Chicken - Ready to Collect",
       "text": "",
       "points": [
         [
@@ -1077,7 +1077,7 @@
       "flags": {}
     },
     {
-      "label": "Chicken",
+      "label": "Chicken - Ready to Collect",
       "text": "",
       "points": [
         [
@@ -1154,7 +1154,7 @@
       "flags": {}
     }
   ],
-  "imagePath": "img_3.png",
+  "imagePath": "sample_0003.png",
   "imageData": null,
   "imageHeight": 800,
   "imageWidth": 1376
