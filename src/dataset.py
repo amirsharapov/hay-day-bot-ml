@@ -23,27 +23,35 @@ class Dataset:
 
     @property
     def root_dir(self):
-        return mkdir(Path(f'datasets/{self.name}'))
+        return Path(f'datasets/{self.name}')
 
     @property
     def raw_dir(self):
-        return mkdir(self.root_dir / 'raw')
+        return self.root_dir / 'raw'
 
     @property
     def augmented_dir(self):
-        return mkdir(self.root_dir / 'augmented')
+        return self.root_dir / 'augmented'
 
     @property
     def coco_dir(self):
-        return mkdir(self.root_dir / 'coco')
+        return self.root_dir / 'coco'
 
     @property
     def train_dir(self):
-        return mkdir(self.root_dir / 'train')
+        return self.root_dir / 'train'
 
     @property
     def val_dir(self):
-        return mkdir(self.root_dir / 'val')
+        return self.root_dir / 'val'
+
+    def create_all_dirs(self):
+        mkdir(self.root_dir)
+        mkdir(self.raw_dir)
+        mkdir(self.augmented_dir)
+        mkdir(self.coco_dir)
+        mkdir(self.train_dir)
+        mkdir(self.val_dir)
 
     def clean_augmented_dir(self):
         clean_dir(self.augmented_dir)

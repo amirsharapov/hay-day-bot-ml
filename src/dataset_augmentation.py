@@ -1,6 +1,7 @@
 import json
 import random
 import shutil
+import sys
 import time
 from copy import deepcopy
 from pathlib import Path
@@ -236,69 +237,3 @@ def generate_train_val_dir(dataset: Dataset):
 
         shutil.copyfile(file, target_image_file)
         shutil.copyfile(annotations_file, target_annotations_file)
-
-
-def train_model():
-    model = YOLO('yolo11n-seg.pt')
-    model.train(
-        data='main.yaml',
-        epochs=50,
-        device=0 if torch.cuda.is_available() else 'cpu'
-    )
-
-
-def test_model():
-    model = YOLO('runs/segment/train4/weights/best.pt')
-
-    image = cv2.imread('img_1.png')
-    model(image, device='cpu')
-
-    start = time.time()
-    results = model(image)
-    elapsed = time.time() - start
-
-    for box in results[0].boxes:
-        x1, y1, x2, y2 = box.xyxy[0]
-        x, y, w, h = x1, y1, x2 - x1, y2 - y1
-        x, y, w, h = int(x), int(y), int(w), int(h)
-
-        cv2.rectangle(image, (x, y), (x + w, y + h), (0, 255, 0), 2)
-
-    cv2.imshow('img', image)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
-
-    print('Elapsed:', elapsed)
-    print(results)
-
-
-def main(
-        should_generate_augmentations: bool,
-        should_generate_coco_dir_from_augmented_dir: bool,
-        should_generate_train_val_dir: bool,
-        should_train_model: bool
-):
-    dataset = Dataset('main')
-
-    if should_generate_augmentations:
-        generate_augmentations(dataset)
-
-    if should_generate_coco_dir_from_augmented_dir:
-        generate_coco_dir_from_augmented_dir(dataset)
-
-    if should_generate_train_val_dir:
-        generate_train_val_dir(dataset)
-
-    if should_train_model:
-        train_model()
-
-    # test_model()
-
-
-if __name__ == '__main__':
-    main(
-        should_generate_augmentations=False,
-        should_generate_coco_dir_from_augmented_dir=False,
-        should_generate_train_val_dir=False,
-        should_train_model=True
-    )
