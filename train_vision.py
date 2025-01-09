@@ -6,6 +6,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import cv2
+import torch
 
 from imgaug.augmentables.polys import Polygon
 from imgaug import augmenters as iaa, PolygonsOnImage
@@ -59,13 +60,10 @@ SEQUENTIAL = iaa.Sequential(
 
 
 def generate_augmentations(dataset: Dataset, from_scratch: bool = False):
-    if from_scratch:
-        dataset.clean_augmented_dir()
-
     for sample in dataset.iterate_raw_samples():
-        # Skip if the sample already has augmentations
-        if not from_scratch:
-            pass
+        # Skip if the name does not start with sample. temporary
+        if not sample.name.startswith('sample_'):
+            continue
 
         # An array of all the images to save
         images_to_save = []
@@ -243,9 +241,9 @@ def generate_train_val_dir(dataset: Dataset):
 def train_model():
     model = YOLO('yolo11n-seg.pt')
     model.train(
-        data='train_chicken_detection_yolo_config.yaml',
-        epochs=100,
-        device=0
+        data='main.yaml',
+        epochs=50,
+        device=0 if torch.cuda.is_available() else 'cpu'
     )
 
 
@@ -274,16 +272,33 @@ def test_model():
     print(results)
 
 
-def main():
+def main(
+        should_generate_augmentations: bool,
+        should_generate_coco_dir_from_augmented_dir: bool,
+        should_generate_train_val_dir: bool,
+        should_train_model: bool
+):
     dataset = Dataset('main')
 
-    generate_augmentations(dataset)
-    # preview_augmented_annotations(dataset)
-    generate_coco_dir_from_augmented_dir(dataset)
-    generate_train_val_dir(dataset)
-    # train_model()
+    if should_generate_augmentations:
+        generate_augmentations(dataset)
+
+    if should_generate_coco_dir_from_augmented_dir:
+        generate_coco_dir_from_augmented_dir(dataset)
+
+    if should_generate_train_val_dir:
+        generate_train_val_dir(dataset)
+
+    if should_train_model:
+        train_model()
+
     # test_model()
 
 
 if __name__ == '__main__':
-    main()
+    main(
+        should_generate_augmentations=False,
+        should_generate_coco_dir_from_augmented_dir=False,
+        should_generate_train_val_dir=False,
+        should_train_model=True
+    )

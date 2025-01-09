@@ -1,4 +1,5 @@
-path: /home/amir/Code/hay-day-bot/datasets/main
+#path: /home/amir/Code/hay-day-bot/datasets/main
+path: C:/Users/amirs/Code/hay-day-bot-ml/datasets/main
 train: train
 val: val
 

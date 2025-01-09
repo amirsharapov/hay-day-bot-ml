@@ -4,8 +4,7 @@ from dataclasses import dataclass
 
 
 def mkdir(path: Path):
-    if not path.exists():
-        path.mkdir()
+    path.mkdir(parents=True, exist_ok=True)
     return path
 
 
@@ -28,23 +27,23 @@ class Dataset:
 
     @property
     def raw_dir(self):
-        return self.root_dir / 'raw'
+        return mkdir(self.root_dir / 'raw')
 
     @property
     def augmented_dir(self):
-        return self.root_dir / 'augmented'
+        return mkdir(self.root_dir / 'augmented')
 
     @property
     def coco_dir(self):
-        return self.root_dir / 'coco'
+        return mkdir(self.root_dir / 'coco')
 
     @property
     def train_dir(self):
-        return self.root_dir / 'train'
+        return mkdir(self.root_dir / 'train')
 
     @property
     def val_dir(self):
-        return self.root_dir / 'val'
+        return mkdir(self.root_dir / 'val')
 
     def clean_augmented_dir(self):
         clean_dir(self.augmented_dir)
