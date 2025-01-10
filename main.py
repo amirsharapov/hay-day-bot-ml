@@ -1,24 +1,16 @@
-import sys
+from pathlib import Path
 
-from src.process_anylabeling_data import process_anylabeling_data
+from src.dataset import Dataset
+from src.ultralytics_preprocessing import preprocess_dataset
+from src.ultralytics_train import train_model
 
 
-def main():
-    args = sys.argv[1:]
-    args = iter(args)
+def main(name: str):
+    dataset = Dataset(Path(f'datasets/{name}'))
 
-    visited = set()
+    preprocess_dataset(dataset)
+    train_model(dataset)
 
-    for arg in args:
-        if arg in visited:
-            continue
-
-        if arg == '--process-raw-data':
-            name = next(args)
-            process_anylabeling_data(name)
-
-        visited.add(arg)
 
 if __name__ == '__main__':
-    # main()
-    process_anylabeling_data('datasets/chickens_ready_for_harvest')
+    main('chickens_ready_for_harvest')
