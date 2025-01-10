@@ -131,7 +131,7 @@ def generate_ultralytics_config_yaml(dataset: Dataset):
     dataset.ultralytics_train_config.write_text(contents)
 
 
-def generate_augmentations_from_coco(dataset: Dataset):
+def generate_augmentations_from_coco(dataset: Dataset, augmentations_per_image: int):
     transform = A.Compose(
         transforms=[
             A.HorizontalFlip(p=0.2),
@@ -168,9 +168,7 @@ def generate_augmentations_from_coco(dataset: Dataset):
             masks.append(mask)
             mask_indices_by_class_id[class_id].append(i)
 
-        n = 6
-
-        for i in range(n):
+        for i in range(augmentations_per_image):
             augmented = transform(image=image, masks=masks)
 
             augmented_image = augmented['image']
@@ -214,4 +212,4 @@ def generate_augmentations_from_coco(dataset: Dataset):
             target_annotations_path = dataset.augmented_dir / (image_path.stem + f'_{i}.txt')
             target_annotations_path.write_text(contents)
 
-        print(f'Generated {n} augmentations for {image_path.name}')
+        print(f'Generated {augmentations_per_image} augmentations for {image_path.name}')

@@ -23,7 +23,7 @@ def main(name: str):
     convert_raw_to_coco(dataset)
 
     print('Generating augmentations...')
-    generate_augmentations_from_coco(dataset)
+    generate_augmentations_from_coco(dataset, augmentations_per_image=5)
 
     print('Splitting augmented into train and val...')
     split_augmented_into_train_val(dataset)

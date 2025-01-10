@@ -3,7 +3,6 @@ import cv2
 from tests.helpers import predict
 
 
-
 def test_wheat_fields():
     objects = predict(
         'datasets/wheat_fields/model.pt',
