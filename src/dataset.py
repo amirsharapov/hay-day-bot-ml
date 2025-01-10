@@ -28,7 +28,7 @@ class Dataset:
     def __post_init__(self):
         self.path = Path(self.path).resolve()
 
-    def create_dirs(self):
+    def create_dirs_if_not_exists(self):
         mkdir(self.path)
         mkdir(self.raw_dir)
         mkdir(self.coco_dir)
@@ -36,8 +36,8 @@ class Dataset:
         mkdir(self.train_dir)
         mkdir(self.val_dir)
 
-    def remove_dirs_except_raw(self):
-        self.create_dirs()
+    def cleanup_dirs(self):
+        self.create_dirs_if_not_exists()
         rmdir(self.coco_dir)
         rmdir(self.augmented_dir)
         rmdir(self.train_dir)

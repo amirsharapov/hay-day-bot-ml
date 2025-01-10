@@ -136,9 +136,7 @@ def generate_augmentations_from_coco(dataset: Dataset):
         transforms=[
             A.HorizontalFlip(p=0.2),
             A.GaussianBlur(blur_limit=(3, 7), p=0.2),
-            # A.AutoContrast(p=0.2),
             A.GaussNoise(p=0.2),
-            # A.RandomBrightnessContrast(brightness_limit=(0.8, 1.2), contrast_limit=(0.8, 1.2), p=0.2),
             A.Affine(translate_percent=(-0.1, 0.1), scale=(0.8, 1.2), p=0.2),
             A.Sharpen(alpha=(0, 1.0), lightness=(0.8, 1.2), p=0.2),
             A.ToGray(p=0.2),
@@ -170,7 +168,9 @@ def generate_augmentations_from_coco(dataset: Dataset):
             masks.append(mask)
             mask_indices_by_class_id[class_id].append(i)
 
-        for i in range(8):
+        n = 16
+
+        for i in range(n):
             augmented = transform(image=image, masks=masks)
 
             augmented_image = augmented['image']
@@ -214,13 +214,4 @@ def generate_augmentations_from_coco(dataset: Dataset):
             target_annotations_path = dataset.augmented_dir / (image_path.stem + f'_{i}.txt')
             target_annotations_path.write_text(contents)
 
-
-
-def preprocess_dataset(dataset: Dataset):
-    dataset.remove_dirs_except_raw()
-    dataset.create_dirs()
-
-    convert_raw_to_coco(dataset)
-    generate_augmentations_from_coco(dataset)
-    split_augmented_into_train_val(dataset)
-    generate_ultralytics_config_yaml(dataset)
+        print(f'Generated {n} augmentations for {image_path.name}')
