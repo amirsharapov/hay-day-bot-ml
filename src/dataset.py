@@ -22,6 +22,7 @@ class Dataset:
         mkdir(self.raw_dir)
         mkdir(self.coco_dir)
         mkdir(self.train_dir)
+        mkdir(self.val_dir)
 
     @property
     def raw_dir(self):
