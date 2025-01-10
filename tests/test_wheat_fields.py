@@ -8,7 +8,7 @@ from ultralytics import YOLO
 def test_wheat_fields():
     model = YOLO('datasets/wheat_fields/model.pt')
 
-    result = model('test_images/test_wheat_fields/img.png')
+    result = model('test_images/test_wheat_fields/img_1.png')
     canvas = result[0].plot()
 
     cv2.imwrite('out.png', canvas)
