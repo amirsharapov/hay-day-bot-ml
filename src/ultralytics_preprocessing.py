@@ -138,8 +138,8 @@ def generate_augmentations_from_coco(dataset: Dataset):
             A.GaussianBlur(blur_limit=(3, 7), p=0.2),
             A.GaussNoise(p=0.2),
             A.Affine(translate_percent=(-0.1, 0.1), scale=(0.8, 1.2), p=0.2),
-            A.Sharpen(alpha=(0, 1.0), lightness=(0.8, 1.2), p=0.2),
-            A.ToGray(p=0.2),
+            A.Sharpen(alpha=(0.2, 0.5), lightness=(0.8, 1.2), p=0.2),
+            A.ToGray(p=0.1),
         ]
     )
 
@@ -168,7 +168,7 @@ def generate_augmentations_from_coco(dataset: Dataset):
             masks.append(mask)
             mask_indices_by_class_id[class_id].append(i)
 
-        n = 8
+        n = 6
 
         for i in range(n):
             augmented = transform(image=image, masks=masks)
