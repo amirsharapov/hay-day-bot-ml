@@ -66,6 +66,8 @@ def split_coco_into_train_val(dataset: Dataset):
     train_val_ratio = 0.8
     train_count = math.floor(len(files) * train_val_ratio)
 
+    print('Train count: {train_count}')
+
     for i, file in enumerate(files):
         if i < train_count:
             target_dir = dataset.train_dir
