@@ -1,3 +1,4 @@
+import math
 import random
 
 import cv2
@@ -63,7 +64,7 @@ def split_coco_into_train_val(dataset: Dataset):
     random.shuffle(files)
 
     train_val_ratio = 0.8
-    train_count = int(len(files) * train_val_ratio)
+    train_count = math.floor(len(files) * train_val_ratio)
 
     for i, file in enumerate(files):
         if i < train_count:
