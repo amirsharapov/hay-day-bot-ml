@@ -64,8 +64,8 @@ class Dataset:
         return self.path / 'val'
 
     @property
-    def ultralytics_config(self):
-        return self.path / 'ultralytics.yaml'
+    def ultralytics_train_config(self):
+        return self.path / 'train.yaml'
 
     def iterate_raw_annotations(self):
         for item in self.raw_dir.glob('*.json'):

@@ -128,7 +128,7 @@ def generate_ultralytics_config_yaml(dataset: Dataset):
     }
 
     contents = yaml.dump(data, sort_keys=False)
-    dataset.ultralytics_config.write_text(contents)
+    dataset.ultralytics_train_config.write_text(contents)
 
 
 def generate_augmentations_from_coco(dataset: Dataset):

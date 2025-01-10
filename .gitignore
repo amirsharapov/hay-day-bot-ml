@@ -8,6 +8,7 @@ datasets/**/augmented/
 datasets/**/coco/
 datasets/**/train/
 datasets/**/val/
+datasets/**/train.yaml
 
 datasets/**/train.cache
 datasets/**/val.cache

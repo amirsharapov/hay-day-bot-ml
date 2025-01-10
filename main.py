@@ -38,8 +38,11 @@ def main(name: str):
     else:
         print('CUDA is not available, skipping training...')
 
-    dataset.cleanup_dirs()
+    # dataset.cleanup_dirs()
 
 
 if __name__ == '__main__':
-    main(sys.argv[1])
+    dataset_name = sys.argv[1]
+    # dataset_name = 'chickens_ready_for_harvest'
+
+    main(dataset_name)
