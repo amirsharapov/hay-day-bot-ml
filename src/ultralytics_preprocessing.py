@@ -137,7 +137,7 @@ def generate_augmentations_from_coco(dataset: Dataset):
             A.HorizontalFlip(p=0.2),
             A.GaussianBlur(blur_limit=(3, 7), p=0.2),
             # A.AutoContrast(p=0.2),
-            A.GaussNoise(std_range=(0.01, 0.05), p=0.2),
+            A.GaussNoise(p=0.2),
             # A.RandomBrightnessContrast(brightness_limit=(0.8, 1.2), contrast_limit=(0.8, 1.2), p=0.2),
             A.Affine(translate_percent=(-0.1, 0.1), scale=(0.8, 1.2), p=0.2),
             A.Sharpen(alpha=(0, 1.0), lightness=(0.8, 1.2), p=0.2),
