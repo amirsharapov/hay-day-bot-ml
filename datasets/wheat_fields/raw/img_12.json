@@ -1,0 +1,35 @@
+{
+  "version": "0.4.8",
+  "flags": {},
+  "shapes": [
+    {
+      "label": "Wheat Field - Stage 2",
+      "text": "",
+      "points": [
+        [
+          355.8571428571429,
+          475.0
+        ],
+        [
+          603.1785714285714,
+          599.1071428571429
+        ],
+        [
+          1021.0357142857142,
+          391.07142857142856
+        ],
+        [
+          769.25,
+          264.2857142857143
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "polygon",
+      "flags": {}
+    }
+  ],
+  "imagePath": "img_12.png",
+  "imageData": null,
+  "imageHeight": 800,
+  "imageWidth": 1376
+}

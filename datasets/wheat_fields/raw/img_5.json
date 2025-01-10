@@ -1,0 +1,35 @@
+{
+  "version": "0.4.8",
+  "flags": {},
+  "shapes": [
+    {
+      "label": "Empty Crop Field",
+      "text": "",
+      "points": [
+        [
+          16.57142857142862,
+          489.2857142857143
+        ],
+        [
+          331.75,
+          652.6785714285714
+        ],
+        [
+          863.0,
+          386.60714285714283
+        ],
+        [
+          540.6785714285714,
+          224.1071428571429
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "polygon",
+      "flags": {}
+    }
+  ],
+  "imagePath": "img_5.png",
+  "imageData": null,
+  "imageHeight": 800,
+  "imageWidth": 1376
+}
