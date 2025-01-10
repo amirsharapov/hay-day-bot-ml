@@ -168,7 +168,7 @@ def generate_augmentations_from_coco(dataset: Dataset):
             masks.append(mask)
             mask_indices_by_class_id[class_id].append(i)
 
-        n = 16
+        n = 8
 
         for i in range(n):
             augmented = transform(image=image, masks=masks)
