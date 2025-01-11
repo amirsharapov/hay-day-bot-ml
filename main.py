@@ -32,11 +32,13 @@ def main(name: str):
     generate_ultralytics_config_yaml(dataset)
 
     if torch.cuda.is_available():
-        print('Training model...')
-        train_model(dataset)
+        print('CUDA is available')
 
     else:
-        print('CUDA is not available, skipping training...')
+        print('CUDA is not available')
+
+    print('Training model...')
+    train_model(dataset)
 
     # dataset.cleanup_dirs()
 
