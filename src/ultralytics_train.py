@@ -6,8 +6,8 @@ from src.dataset import Dataset
 
 def train_model(
         dataset: Dataset,
-        model: str = 'yolo11s-seg.pt',
-        epochs: int = 25
+        model: str = 'yolo11n-seg.pt',
+        epochs: int = 50
 ):
     model = YOLO(model)
     model.train(
