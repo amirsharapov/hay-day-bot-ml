@@ -35,8 +35,7 @@ def predict(model_path: str | Path, image_path: str | Path):
         mask = mask.astype(np.uint8) * 255
         mask = cv2.resize(mask, (dims[1], dims[0]))
 
-        class_id = result.boxes.cls[0]
-        class_id = class_id.item()
+        class_id = result.boxes.cls[0].item()
         class_name = result.names[class_id]
 
         original_image = cv2.imread(str(image_path))
