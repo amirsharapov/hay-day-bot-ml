@@ -93,44 +93,6 @@ def convert_raw_to_coco(dataset: Dataset):
         target_annotations_path.write_text(txt_contents)
 
 
-def split_augmented_into_train_val(dataset: Dataset):
-    files = dataset.augmented_dir.glob('*.txt')
-    files = list(files)
-
-    random.shuffle(files)
-
-    train_val_ratio = 0.8
-    train_count = math.floor(len(files) * train_val_ratio)
-
-    print(f'Train count: {train_count}')
-
-    for i, file in enumerate(files):
-        if i < train_count:
-            target_dir = dataset.train_dir
-        else:
-            target_dir = dataset.val_dir
-
-        # Write annotations
-        target_file = target_dir / file.name
-        target_file.write_text(file.read_text())
-
-        # Write image
-        target_file = target_dir / file.with_suffix('.png').name
-        target_file.write_bytes(file.with_suffix('.png').read_bytes())
-
-
-def generate_ultralytics_config_yaml(dataset: Dataset):
-    data = {
-        'path': dataset.path.absolute().as_posix(),
-        'train': 'train',
-        'val': 'val',
-        'names': flip_dict(get_classes(dataset))
-    }
-
-    contents = yaml.dump(data, sort_keys=False)
-    dataset.ultralytics_train_config.write_text(contents)
-
-
 def generate_augmentations_from_coco(dataset: Dataset, augmentations_per_image: int):
     transform = A.Compose(
         transforms=[
@@ -213,3 +175,41 @@ def generate_augmentations_from_coco(dataset: Dataset, augmentations_per_image: 
             target_annotations_path.write_text(contents)
 
         print(f'Generated {augmentations_per_image} augmentations for {image_path.name}')
+
+
+def split_augmented_into_train_val(dataset: Dataset):
+    files = dataset.augmented_dir.glob('*.txt')
+    files = list(files)
+
+    random.shuffle(files)
+
+    train_val_ratio = 0.8
+    train_count = math.floor(len(files) * train_val_ratio)
+
+    print(f'Train count: {train_count}')
+
+    for i, file in enumerate(files):
+        if i < train_count:
+            target_dir = dataset.train_dir
+        else:
+            target_dir = dataset.val_dir
+
+        # Write annotations
+        target_file = target_dir / file.name
+        target_file.write_text(file.read_text())
+
+        # Write image
+        target_file = target_dir / file.with_suffix('.png').name
+        target_file.write_bytes(file.with_suffix('.png').read_bytes())
+
+
+def generate_ultralytics_config_yaml(dataset: Dataset):
+    data = {
+        'path': dataset.path.absolute().as_posix(),
+        'train': 'train',
+        'val': 'val',
+        'names': flip_dict(get_classes(dataset))
+    }
+
+    contents = yaml.dump(data, sort_keys=False)
+    dataset.ultralytics_train_config.write_text(contents)
